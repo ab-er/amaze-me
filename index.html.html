@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ازهلني</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            background-color: #ffffff; /* تغيير الخلفية إلى الأبيض */
+        color: #A0522D; /* تغيير لون النص إلى العودي */
+            padding: 20px;
+        }
+          /* قائمة الهامبرغر */
+          .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .dropdown {
+            display: none; /* إخفاء القائمة بشكل افتراضي */
+            position: absolute;
+            top: 60px; /* تعديل موضع القائمة حسب الحاجة */
+            right: 20px; /* محاذاة القائمة إلى اليمين */
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10; /* رفع مستوى الزر في طبقات التصميم */
+        }
+
+        .dropdown a {
+            color: #00aaff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #f9f9f9;
+        }
+        .container {
+    width: 100%; /* استخدم نسبة لتتناسب مع الشاشة */
+    max-width: 1200px; /* حد أقصى للعرض */
+    color: #333;
+}
+header, .content, .map-section, .cars-section, .best-selling-header, .car-card {
+    width: 100%;
+}
+header {
+            background-color: #A0522D; /* رمادي فاتح */
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر بين اليمين واليسار */
+        }
+
+/* تأكيد ضبط زر "Rent Cars" */
+.rent-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            color: #fff;;
+        }
+        .logo img {
+    width: 100px; /* عرض الصورة المطلوب */
+    height: auto; /* الارتفاع سيتناسب تلقائيًا */
+}
+
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background: #A0522D;
+            margin: 4px 0;
+        }
+        .menu-icon {
+            margin-left: auto; /* يحرك الأيقونات إلى اليمين */
+            cursor: pointer; /* يجعل المؤشر يظهر كإشارة للنقر */
+        }
+
+        .menu-icon div {
+            width: 25px;
+            height: 3px;
+            background: #fff;;
+            margin: 4px 0;
+        }
+
+        /* Content Section */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .content p {
+            font-size: 16px;
+            margin: 10px 0 20px;
+            color: #A0522D;
+        }
+
+        /* Map Section */
+        .map-section {
+            display: flex; /* استخدام flex لتوسيع الخريطة */
+            justify-content: center; /* توسيط الخريطة */
+            align-items: center; /* لتوسيع الخريطة بشكل عمودي */
+            margin: 20px auto; /* اتاحة مسافة من الأعلى والأسفل */
+        }
+
+        .map-section iframe {
+            width: 100%; /* تعيين عرض الخريطة ليكون 100% */
+            max-width: 800px; /* تحديد الحد الأقصى للعرض */
+            height: 450px; /* تعيين ارتفاع الخريطة */
+            border: 0; /* إزالة الإطار */
+            margin: 0 auto; /* توسيط الخريطة */
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #00aaff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #00aaff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        /* Cars Section */
+        .cars-section {
+            background-color: #fff;
+            color: #333;
+            border-radius: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cars-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .car-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .car-item:first-child {
+            border-top: none;
+        }
+
+        .car-image {
+            width: 80px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 15px;
+            background: #eee;
+        }
+
+        .car-details {
+            flex: 1;
+        }
+
+        .car-title {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .car-price {
+            font-size: 16px;
+            color: #00aaff;
+            margin: 5px 0;
+        }
+
+        .car-distance {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            width: 50px;
+        }
+
+        .carousel-controls button {
+            background: #00aaff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background: #007acc;
+        }
+
+        /* Best Selling Cars Section */
+       /* Best Selling Cars Section */
+.best-selling-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #A0522D; /* Updated color for header */
+    margin-top: 40px;
+    margin-bottom: 20px; /* Added margin for spacing */
+    border-bottom: 2px solid #00aaff; /* Added bottom border for emphasis */
+    padding-bottom: 10px; /* Added padding for spacing */
+}
+
+.car-card {
+    background-color: #fff; /* Background color for the car card */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding around content */
+    margin-bottom: 20px; /* Space between cards */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    position: relative; /* Position for the discount badge */
+    display: flex; /* Flex for layout */
+    align-items: center; /* Centering items vertically */
+    gap: 20px; /* Space between image and text */
+}
+
+.discount-badge {
+    position: absolute; /* Positioned badge */
+    top: 15px; /* Positioned relative to the card */
+    left: 15px; /* Positioned relative to the card */
+    background-color: #ff4d4d; /* Badge color */
+    color: #fff; /* Text color */
+    padding: 5px 10px; /* Padding for badge */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px; /* Font size for badge */
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+.car-image {
+    width: 120px; /* Adjusted width for car image */
+    height: 80px; /* Adjusted height for car image */
+    border-radius: 10px; /* Rounded corners for images */
+    object-fit: cover; /* Ensures images cover the area */
+}
+
+.car-details {
+    flex: 1; /* Takes remaining space */
+    text-align: left; /* Align text to the left */
+}
+
+.car-name {
+    font-size: 20px; /* Increased font size */
+    font-weight: bold; /* Bold text for car name */
+    color: #333; /* Darker color for contrast */
+}
+
+.car-price {
+    font-size: 18px; /* Increased font size */
+    color: #00aaff; /* Color for price */
+    margin: 5px 0; /* Margin for spacing */
+}
+
+.car-old-price {
+    font-size: 14px; /* Font size for old price */
+    color: #bbb; /* Gray color for old price */
+    text-decoration: line-through; /* Strikethrough effect */
+    margin-left: 10px; /* Space from current price */
+}
+
+.car-info {
+    display: flex; /* Flex for layout */
+    align-items: center; /* Center items */
+    gap: 15px; /* Space between items */
+    font-size: 14px; /* Font size for car info */
+    color: #777; /* Gray color for info */
+    margin-top: 10px; /* Margin for spacing */
+}
+
+.car-info img {
+    width: 16px; /* Size for icons */
+    height: 16px; /* Size for icons */
+}
+.benefits {
+    display: flex; /* استخدم فليكس لتوزيع العناصر */
+    flex-wrap: wrap; /* السماح للعناصر بالتفاف */
+    justify-content: center; /* توسيط العناصر */
+    margin-top: 30px; /* إضافة مسافة أعلى القسم */
+}
+
+.benefit {
+    background-color: #f9f9f9; /* لون خلفية فاتح */
+    border-radius: 10px; /* زوايا مدورة */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    margin: 15px; /* مسافة بين العناصر */
+    padding: 20px; /* حشوة داخلية */
+    text-align: center; /* توسيط النص */
+    width: 200px; /* عرض ثابت */
+    transition: transform 0.3s; /* تأثير التحويل */
+}
+
+.benefit:hover {
+    transform: translateY(-5px); /* تأثير رفع عند المرور بالماوس */
+}
+
+.benefit img {
+    width: 50px; /* ضبط حجم الأيقونات */
+    height: 50px; /* ضبط حجم الأيقونات */
+    margin-bottom: 10px; /* مسافة تحت الصورة */
+}
+.benefits-title {
+    text-align: center; /* محاذاة إلى الوسط */
+    color: #A0522D; /* لون عودي */
+    font-size: 28px; /* حجم الخط */
+    margin-bottom: 20px; /* مساحة تحت العنوان */
+}
+.rent-button {
+    padding: 10px 20px; /* مساحة داخلية */
+    background-color: #fff; /* لون خلفية الزر */
+    color: #00aaff; /* لون النص */
+    border: none; /* بدون إطار */
+    border-radius: 20px; /* زوايا مدورة */
+    font-size: 16px; /* حجم الخط */
+    cursor: pointer; /* إشارة بالنقر */
+    transition: background-color 0.3s ease; /* تأثير عند المرور */
+    display: inline-block; /* لتوسيع الزر بشكل أفضل */
+    margin: 20px auto; /* المساحة حول الزر */
+}
+.footer {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-logo img {
+            width: 50px;
+            height: auto;
+        }
+        .footer-text {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .footer-text p {
+            margin: 5px 0;
+        }
+        .footer-text p {
+            margin: 5px 0;
+        }
+        .footer-links, .footer-support {
+            margin-top: 20px;
+        }
+        .footer-links a, .footer-support a {
+            color: #d3d3d3;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .footer-links a:first-child {
+            font-weight: bold;
+        }
+        .footer-support {
+            margin-top: 30px;
+        }
+        .footer-text p {
+            margin: 5px 0;
+        }
+        .footer-links, .footer-support {
+            margin-top: 20px;
+        }
+        .footer-links a, .footer-support a {
+            color: #d3d3d3;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .footer-links a:first-child {
+            font-weight: bold;
+        }
+        .footer-support {
+            margin-top: 30px;
+        }
+        .support-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+        .support-item img {
+            width: 20px;
+            height: auto;
+        }
+
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1 class="logo">
+                <img src="ازهلني.jpg" alt="ازهلني">
+            </h1>
+            <div class="menu-icon" onclick="toggleDropdown()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="dropdown" id="dropdownMenu">
+                <a href="#">Home</a>
+                <a href="form.html">Instant Booking</a>
+                <a href="payment.html">payment</a>
+                <a href="contact.html">contact</a>
+            </div>
+            
+        </header>
+        
+        <!-- Content Section -->
+        <div class="content">
+            <h2>Drive on Your Own Schedule</h2>
+            <p>مرحباً بكم في "أزهلني" - وجهتكم الموثوقة لتأجير السيارات! يسعدنا أن نعلن عن إطلاق موقعنا الجديد، الذي يهدف إلى تيسير تجربة تأجير السيارات بكل سهولة ويسر. سواء كنت تخطط لرحلة عمل أو إجازة، فإن "أزهلني" يوفر لك مجموعة متنوعة من السيارات التي تناسب احتياجاتك. استعد لاستكشاف خيارات متعددة، خدمات عالية الجودة، وأسعار تنافسية. انطلق معنا في رحلتك ونجعل تجربتك في تأجير السيارات أكثر سلاسة!</p>
+           
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <!-- Map Section -->
+<div class="map-section">
+    <!-- تضمين الخريطة باستخدام Google Maps -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224619.15890951848!2d36.730719002163916!3d28.39890196936922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15a852db08665d41%3A0x4608da0f0ad0e293!2z2YXYt9in2LEg2KfZhNij2YXZitixINiz2YTYt9in2YYg2KjZhiDYudio2K8g2KfZhNi52LLZitiy4oCO!5e0!3m2!1sar!2ssa!4v1730714657339!5m2!1sar!2ssa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        
+    </iframe>
+    <!-- Overlay لعرض السعر -->
+ 
+</div>
+        </div>
+        </div>
+        
+
+        <!-- Best Selling Cars Section -->
+        <div class="best-selling-header">Best Selling Cars</div>
+        <div class="car-card">
+            <div class="discount-badge">-17%</div>
+            <img src="شيفروليه تاهو .jpg" alt="شيفروليه تاهو " class="car-image">
+            <div class="car-details">
+                <div class="car-name">شيفروليه تاهو </div>
+                <div>
+                    <span class="car-price">99 AED</span>
+                    <span class="car-old-price">120 AED</span>
+                </div>
+                <div class="car-info">
+                    <span>5 seats</span>
+                    <span>Sedan</span>
+                    <span>2022 Model</span>
+                    <span>1 day</span>
+                    <button class="rent-button" onclick="location.href='form.html'">استئجار الان </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="discount-badge">-15%</div>
+            <img src="هيونداي أكسنت.jpg" alt="هيونداي أكسنت" class="car-image">
+            <div class="car-details">
+                <div class="car-name">هيونداي أكسنت"</div>
+                <div>
+                    <span class="car-price">129 AED</span>
+                    <span class="car-old-price">150 AED</span>
+                </div>
+                <div class="car-info">
+                    <span>5 seats</span>
+                    <span>SUV</span>
+                    <span>2021 Model</span>
+                    <span>1 day</span>
+                    <button class="rent-button" onclick="location.href='form.html'">استئجار الان </button>
+
+                </div>
+            </div>
+        </div>
+                <!-- Third Car Card -->
+                <div class="car-card">
+                    <div class="discount-badge">-20%</div>
+                    <img src="قراند i10 هيونداي .jpg" alt="قراند i10 هيونداي  " class="car-image">
+                    <div class="car-details">
+                        <div class="car-name">قراند i10 هيونداي  </div>
+                        <div>
+                            <span class="car-price">110 AED</span>
+                            <span class="car-old-price">137 AED</span>
+                        </div>
+                        <div class="car-info">
+                            <span>5 seats</span>
+                            <span>Sedan</span>
+                            <span>2023 Model</span>
+                            <span>1 day</span>
+                            <button class="rent-button" onclick="location.href='form.html'">استئجار الان </button>
+
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Fourth Car Card -->
+                <div class="car-card">
+                    <div class="discount-badge">-10%</div>
+                    <img src="ايسوزو ام يو اكس.jpg" alt="ايسوزو ام يو اكس " class="car-image">
+                    <div class="car-details">
+                        <div class="car-name">ايسوزو ام يو اكس</div>
+                        <div>
+                            <span class="car-price">150 AED</span>
+                            <span class="car-old-price">167 AED</span>
+                        </div>
+                        <div class="car-info">
+                            <span>7 seats</span>
+                            <span>SUV</span>
+                            <span>2022 Model</span>
+                            <span>1 day</span>
+                            <button class="rent-button" onclick="location.href='form.html'">استئجار الان </button>
+
+                        </div>
+                    </div>
+                </div>
+                <button class="rent-button" onclick="location.href='form.html'">Rent Cars</button>
+                
+
+        <div class="container">
+            <h1 class="benefits-title">مميزات ازهلني</h1> 
+            <div class="benefits">
+                <div class="benefit">
+                    <img src="الحجز.jpg" alt="وقت">
+                    <h2>مرونة في مدة الحجز</h2>
+                    <p>يمكنك حجز السيارة ليوم، أسبوع، أو أشهر. تنتهي الرحلة متى ما أردت.</p>
+                </div>
+                <div class="benefit">
+                    <img src="مكان.jpg" alt="مكان">
+                    <h2>في أي وقت وأي مكان!</h2>
+                    <p>استمتع بالمرونة لبدء وإنهاء رحلتك من أي مكان، في أي وقت!</p>
+                </div>
+                <div class="benefit">
+                    <img src="وديعة.jpg" alt="بدون وديعة">
+                    <h2>استئجار السيارة بدون وديعة</h2>
+                    <p>استأجر السيارة بدون الحاجة إلى دفع وديعة واستعد للانطلاق.</p>
+                </div>
+                <div class="benefit">
+                    <img src="دعم.jpg" alt="دعم">
+                    <h2>دعم على الطريق على مدار الساعة</h2>
+                    <p>ممثلين دعم ekar متواجدين لمساعدتك في أي وقت، لأي مشكلة تواجهها.</p>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+    <div class="footer">
+        <!-- Logo and Description -->
+        <div class="footer-logo">
+            <img src="ازهلني.jpg" alt="ekar Logo">
+            <div class="footer-text">
+                <p>يوفر ازهلني إمكانية الوصول الفوري إلى السيارات للقيادة الذاتية عبر الموقع، مما يلغي الحاجة إلى المكاتب الفعلية أو الأعمال الورقية..</p>
+                <p>حقوق الطبع والنشر © ازهلني  2024. جميع الحقوق محفوظة.</p>  
+            </div>
+        </div>  <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="form.html">Instant Booking</a>
+          
+        </div>
+
+        <!-- Support Section -->
+        <div class="footer-support">
+            <h3>Support</h3>
+            <div class="support-item">
+                <img src="ايميل.jpg" alt="Email Icon">
+                <a href="mailto:Help@ekar.me">Help@ازهلني.me</a>
+            </div>
+            <div class="support-item">
+                <img src="هاتف.jpg" alt="Phone Icon">
+                <a href="tel:600567564">600 567 564222</a>
+            </div>
+        </div>
+    </div>
+
+        
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "none" || dropdown.style.display === "" ? "block" : "none";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-icon') && !event.target.matches('.menu-icon div')) {
+                const dropdowns = document.getElementsByClassName("dropdown");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") {
+                        openDropdown.style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

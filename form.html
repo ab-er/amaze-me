@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Form</title>
+    <style>
+        /* إعدادات أساسية للتنسيق */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+        
+        /* تنسيق نموذج العرض */
+        .offer-form {
+            background-color: #fff;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* تنسيق العنوان الرئيسي */
+        .offer-form h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        .offer-form h1 span {
+            color: #00AEEF;
+            font-weight: bold;
+        }
+
+        /* خطوات النموذج */
+        .steps {
+            background-color: #e8f9ff;
+            border: 1px solid #800000;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        .step-circle {
+            background-color: #800000;
+            color: #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* تنسيق الحقول */
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* تنسيق حقول رقم الهاتف */
+        .phone-input {
+            display: flex;
+            align-items: center;
+        }
+        .phone-input select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        .phone-input input[type="text"] {
+            border-radius: 0 5px 5px 0;
+            border-left: none;
+            flex: 1;
+        }
+
+        /* زر الإرسال */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="offer-form">
+        <h1>Enjoy <span>50% Off</span> on Your First Ride <br> Today!</h1>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-circle">1</div>
+                <span>Enter Mobile Number and Verify</span>
+            </div>
+            <div class="step">
+                <div class="step-circle">2</div>
+                <span>Book and Save</span>
+            </div>
+        </div>
+
+        <form id="offerForm" action="http://localhost/CarRental/submit_offer.php" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            
+            <div class="phone-input">
+                <select name="country_code">
+                    <option value="+971">+996</option>
+                    <!-- يمكنك إضافة خيارات أخرى حسب الحاجة -->
+                </select>
+                <input type="text" name="mobile" placeholder="Mobile Number" required>
+            </div>
+            
+            <input type="email" name="email" placeholder="Email (Optional)">
+            <button type="submit" class="submit-btn">Submit</button>
+        
+        </form>
+        <nav>
+            <a href="index.html.html">الرئيسية</a>
+        </nav>
+    </div>
+</body>
+</html>

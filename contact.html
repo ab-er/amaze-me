@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>اتصل بنا</title>
+    <style>
+        /* إعدادات أساسية */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        /* تصميم نموذج الاتصال */
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* عنوان الصفحة */
+        .contact-form h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .contact-form h2 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* الحقول */
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #800080;
+            outline: none;
+        }
+
+        /* زر الإرسال */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #800000;
+            transform: scale(1.05);
+        }
+
+        /* تنسيق الروابط */
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #800000;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #9932cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-form">
+        <h1>اتصل بنا</h1>
+        <h2>نموذج الاتصال</h2>
+        <form id="contactForm" action="http://localhost/CarRentalApp/contact.php" method="POST">
+            <input type="text" name="name" placeholder="الاسم" required>
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <textarea name="message" placeholder="رسالتك" rows="5" required></textarea>
+            <button type="submit">إرسال</button>
+        </form>
+        <nav>
+            <a href="index.html.html">الرئيسية</a>
+        </nav>
+    </div>
+</body>
+</html>

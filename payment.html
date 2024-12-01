@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عملية الدفع</title>
+    <style>
+        /* إعدادات أساسية للتنسيق */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        /* تنسيق نموذج الدفع */
+        .payment-form {
+            background-color: #fff;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* تنسيق العنوان الرئيسي */
+        .payment-form h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .payment-form h1 span {
+            color: #00AEEF;
+            font-weight: bold;
+        }
+
+        /* الحقول */
+        input[type="text"],
+        input[type="number"],
+        input[type="month"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* زر الإرسال */
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #A30000;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-form">
+        <h1>عملية <span>الدفع</span></h1>
+        <form id="paymentForm" method="POST" action=http://localhost/CarRental/process_payment.php>
+            <input type="text" name="card_number" placeholder="رقم البطاقة" required>
+            <input type="month" name="expiry_date" required>
+            <input type="text" name="cardholder_name" placeholder="اسم صاحب البطاقة" required>
+            <input type="number" name="cvv" placeholder="CVV" required>
+            <button type="submit" class="submit-btn">إجراء الدفع</button>
+        </form>
+        <nav>
+            <a href="index.html.html">الرئيسية</a>
+        </nav>
+    </div>
+</body>
+</html>
